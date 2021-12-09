@@ -1,0 +1,12 @@
+<div>
+    <h3 style="text-align: center;"><img src="assets/logo.svg.png" width="50px">
+        Estratégias de Cobertura - Eletricidade
+    </h3>
+</div>
+<p></p>
+<p-progressSpinner style="position:relative;margin-left:50%;margin-right:50%;margin-top:20px" *ngIf="loading"></p-progressSpinner>
+<p-tabView *ngIf="!loading">
+    <p-tabPanel [header]="tab.label" *ngFor="let tab of tabs; let i = index" [selected]="i == 0" [headerStyle]="{'width': '33%'}">
+        <relatorio-optimizacao [reports]="tab.reports" [simulacao]="simulacao"></relatorio-optimizacao>
+    </p-tabPanel>
+</p-tabView>

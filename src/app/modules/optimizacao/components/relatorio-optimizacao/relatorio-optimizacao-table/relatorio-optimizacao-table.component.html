@@ -1,0 +1,48 @@
+<p-table [columns]="exposicaoHeaders" [value]="exposicaoValues" responsiveLayout="scroll">
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th *ngFor="let col of columns" pResizableColumn [ngStyle]="{'width': col.width}">
+                {{col.header}}
+            </th>
+        </tr>
+    </ng-template>
+    
+    <ng-template *ngIf="tipo=='QUARTER'" pTemplate="body" let-row>
+        <tr style="font-size:12px;">
+            <td>
+                <p><strong>{{row.title}}</strong></p>
+                <p style="font-size:11px">Margem: {{row.margem.data}}{{row.margem.unidade}}</p>
+                <p style="font-size:11px">Risco: {{row.risco.data}}{{row.risco.unidade}}</p>
+            </td>
+            <td>
+                <tr *ngFor="let col of row.values">{{col.title}}</tr>
+            </td>
+            <td>
+                <tr *ngFor="let col of row.values">{{col.unidade}}</tr>
+            </td>
+            <td>
+                <tr *ngFor="let col of row.values">{{col.data}}</tr>
+            </td>
+        </tr>
+    </ng-template>
+
+    <ng-template *ngIf="tipo=='ANUAL'" pTemplate="body" let-row>
+        <tr style="font-size:12px;">
+            <td>
+                <p><strong>{{row.title}}</strong></p>
+                <p style="font-size:11px">Margem: {{row.margem.data}}{{row.margem.unidade}}</p>
+                <p style="font-size:11px">Risco: {{row.risco.data}}{{row.risco.unidade}}</p>
+            </td>
+            <td>
+                <tr *ngFor="let col of row.values">{{col.title}}</tr>
+            </td>
+            <td>
+                <tr *ngFor="let col of row.values">{{col.unidade}}</tr>
+            </td>
+            <td *ngFor="let a of quarters; let i = index">
+                <tr *ngFor="let col of row.values">{{col.data && col.data[i]}}</tr>
+            </td>
+        </tr>
+    </ng-template>
+
+</p-table>

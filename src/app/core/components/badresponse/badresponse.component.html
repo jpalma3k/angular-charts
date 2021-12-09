@@ -1,0 +1,45 @@
+<div *ngIf="url=='/500'">
+  <h2>
+    500 :( - Erro interno do servidor!
+  </h2>
+  <p>O servidor encontrou um erro inesperado e não foi possível completar o seu pedido.</p>
+  <p><strong>O erro pode ter ocorrido pelos seguintes motivos: </strong></p>
+  <ul>
+    <li>
+      O servidor encontra-se em manutenção.
+    </li>
+    <li>
+      Ocorreu uma falha durante a sua navegação.
+    </li>
+  </ul>
+  <p><strong>Para tentar solucionar o problema, por favor: </strong></p>
+  <ul>
+    <li>
+      Aguarde alguns minutos e tente actualizar a página.
+    </li>
+    <li>
+      Se o problema persistir contacte a manutenção.
+    </li>
+  </ul>
+  <p>
+    <a class="btn btn-outline" routerlink="/" routerLinkActive="active" href="/">Actualizar Página</a>
+  </p>
+</div>
+
+<div *ngIf="url=='/404'">
+  <h2>
+    404 :( - Página não encontrada!
+  </h2>
+  <p>A página que pretende ver não foi encontrada.<br>A página pode ter sido desactivada ou foi introduzido um endereço incorrecto.
+    <br>Por favor, verifique o endereço colocado e tente novamente.
+  </p>
+</div>
+
+<div *ngIf="url=='/403'">
+  <h2>
+    403 :( - Accesso Interdito!
+  </h2>
+  <p>A página que pretende ver não pode ser acedida.<br>A página pode ter acesso restrito ou o utilizador não tem acesso à plataforma.
+    <br>Por favor, confirme as suas permissões. Se o problema persistir contacte a manutenção.
+  </p>
+</div>

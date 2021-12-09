@@ -1,0 +1,36 @@
+<p-tabView>
+    <p-tabPanel [header]="rel.label" *ngFor="let rel of reports; let i = index" [selected]="i == 0">
+        <div class="card">
+            <div class="clr-row" style="margin:10px;">
+                <div class="clr-col-6 clr-align-self-center">
+                    <relatorio-optimizacao-scatter [data]="rel.grafico_pontos"></relatorio-optimizacao-scatter>
+                </div>
+                <div class="clr-col-6 clr-align-self-center" style="overflow:auto;height:300px">
+                    <relatorio-optimizacao-table [data]="rel.tabela_cobertura" [tipo]="simulacao.tipo_prazo"></relatorio-optimizacao-table>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="clr-row" style="margin:10px;">
+                <div class="clr-col-6 clr-align-self-center">
+                    <relatorio-optimizacao-diferencial [data]="rel.diferencial"></relatorio-optimizacao-diferencial>
+                </div>
+                <div class="clr-col-6 clr-align-self-center" style="overflow:auto;height:300px">
+                    <relatorio-optimizacao-table [data]="rel.tabela_cobertura_diferencial" [tipo]="simulacao.tipo_prazo"></relatorio-optimizacao-table>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="clr-row" style="margin:10px;">
+                <div class="clr-col-6">
+                    <relatorio-optimizacao-barras [data]="rel.grafico_coberturas"></relatorio-optimizacao-barras>
+                </div>
+                <div class="clr-col-6 clr-align-self-center">
+                    <relatorio-optimizacao-exposicao [data]="rel.exposicao"></relatorio-optimizacao-exposicao>
+                </div>
+            </div>
+        </div>
+    </p-tabPanel>
+</p-tabView>

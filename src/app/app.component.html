@@ -1,0 +1,86 @@
+<clr-main-container class="main-container">
+
+    <clr-header class="header header-6">
+
+        <!--
+      <button (click)="hamburgerClick()" class="header-hamburger-trigger wide-hambuger">
+          <span></span>
+      </button>
+      -->
+        <div class="branding">
+            <a class="logo-and-title" routerlink="/" routerLinkActive="active" href="/">
+                <span class="title" style="
+                          font-size: 20px;
+                          margin-right: 5px;
+                          margin-left: 12px;
+                  ">DMB</span>
+                <!--
+              <span class="clr-icon" style="
+                      background-image: url(./assets/siga_logo.png);
+                      margin-right: 11px;
+                      height: 30px;
+                      width: 85px;
+                  "></span>
+                  -->
+            </a>
+        </div>
+
+
+        <user-profile *ngIf="user" [user]="user" style="width: 100%; margin-right: 10px;"></user-profile>
+
+    </clr-header>
+
+    <div class="content-container">
+        <div class="content-area">
+            <router-outlet></router-outlet>
+        </div>
+        <div *ngIf="loadingApp && !userExists" class="content-area">
+            <div class="spinner spinner-lg">
+                Loading...
+            </div>
+        </div>
+
+        <nav #sidenav *ngIf="!loadingApp" class="sidenav siga_nav" [clr-nav-level]="1">
+            <section *ngIf="user" class="sidenav-content siga_nav">
+
+                <ng-container *ngFor="let module of userModules">
+                    <a *ngIf="module.sections.length==0" class="nav-link" [routerLink]="module.route"
+                        routerLinkActive="active">{{module.module_display_name}}</a>
+
+                    <section *ngIf="module.sections.length>0" class="nav-group collapsible">
+                        <input id="tab1" type="checkbox">
+                        <label for="tab1">{{module.module_display_name}}</label>
+                        <ul class="nav-list">
+                            <ng-container *ngFor="let section of module.sections">
+                                <li>
+                                    <a *ngIf="section.type=='route'" class="nav-link" [routerLink]="section.route"
+                                        routerLinkActive="active">{{section.display_name}}</a>
+                                    <a *ngIf="section.type=='button_link'" [href]="section.route" target="_blank"
+                                        class="nav-link">
+                                        <i *ngIf="section.icon" [class]="section.icon"></i>
+                                        {{section.display_name}}
+                                    </a>
+                                </li>
+                            </ng-container>
+
+                        </ul>
+                    </section>
+
+                </ng-container>
+
+            </section>
+
+            <div class="siga_footer">
+                <!-- <a href="{{manual_url}}" target="_blank">
+              <button type="button" pButton icon="fa-book" label="Manual" class="ui-button-secondary siga-manual-link"></button>
+              </a>
+            -->
+                <div style="text-align: center;">
+                    © {{getFullYear()}}
+                </div>
+            </div>
+
+        </nav>
+    </div>
+
+</clr-main-container>

@@ -1,0 +1,46 @@
+<div *ngIf="user" class="header-actions" style="
+    ">
+    <!--
+    <div style="
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: normal;
+    line-height: 6px;
+    padding-top: 14px;">
+    -->
+    <div style="
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: normal;
+    padding-top: 20px;">
+        <div style="
+            font-size: 14px;
+            padding-bottom: 7px;">
+            {{user.name}}
+        </div><br>
+        <!--<div style="">{{user.name}}</div><br>-->
+        <!--<div style="">{{user.email}}</div>-->
+    </div>
+
+    <clr-dropdown clrMenuPosition="bottom-right">
+        <button class="nav-icon" style="opacity: 0.90;" clrDropdownToggle>
+            <span class="clr-icon"
+             style="
+                border-radius: 50%;
+                width: 75%;
+                height: 75%;
+                opacity: 0.90;
+            " [style.background-image]="userImage">
+            </span>
+        </button>
+
+        <div class="dropdown-menu">
+            <a clrDropdownItem routerLinkActive="active" routerLink="/userdetail">Perfil</a>
+            <!--
+            <a href="javascript://" clrDropdownItem>Preferências</a>
+            <a href="javascript://" clrDropdownItem>Sair</a>
+            -->
+        </div>
+
+    </clr-dropdown>
+</div>
